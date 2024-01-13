@@ -6,4 +6,9 @@ def main():
     os.chdir(path)
     os.mkdir("data")
     downlink = "https://www.football-data.co.uk/mmz4281/"
-    leagues = ["E0", "F1", "D1", "SP1", "I1", "N1"]
+    leagues = ["E0", "F1", "D1", "SP1", "I1", "N1"] # download argentina and brazil later
+    os.chdir("data")
+    for league in leagues:
+        os.mkdir(league)
+        for year in range(12,24):
+            urlretrieve(downlink + str(year) + str(year+1) + "/" + league + ".csv", str(year) + str(year+1) + ".csv") # direct these into the league folders
