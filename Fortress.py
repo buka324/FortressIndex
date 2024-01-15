@@ -32,15 +32,14 @@ def makeFortressFromTeam(club, league):
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if row["League"] != "Copa de la Liga Profesional":
+                    fort.matches += 1
                     if row["HomeTeam"] == club:
                         fort.homepoints += pointsFromResult(row["FTR"], "H")
                         fort.points += pointsFromResult(row["FTR"], "H")
                         fort.homematches += 1
-                        fort.matches += 1
                         fort.homeGA += int(row["FTAG"])
                     elif row["AwayTeam"] == club:
                         fort.points += pointsFromResult(row["FTR"], "A")
-                        fort.matches += 1
     else:
         match league:
             case "ENG":
@@ -64,15 +63,14 @@ def makeFortressFromTeam(club, league):
                 with open(file) as csvfile:
                     reader = csv.DictReader(csvfile)
                     for row in reader:
+                        fort.matches += 1
                         if row["HomeTeam"] == club:
                             fort.homepoints += pointsFromResult(row["FTR"], "H")
                             fort.points += pointsFromResult(row["FTR"], "H")
                             fort.homematches += 1
-                            fort.matches += 1
                             fort.homeGA += int(row["FTAG"])
                         elif row["AwayTeam"] == club:
                             fort.points += pointsFromResult(row["FTR"], "A")
-                            fort.matches += 1
         os.chdir("..")
         os.chdir("..")
     return fort
