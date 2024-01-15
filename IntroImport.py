@@ -11,4 +11,7 @@ def main():
     for league in leagues:
         os.mkdir(league)
         for year in range(12,24):
-            urlretrieve(downlink + str(year) + str(year+1) + "/" + league + ".csv", str(year) + str(year+1) + ".csv") # direct these into the league folders
+            urlretrieve(downlink + str(year) + str(year+1) + "/" + league + ".csv", league + "/" + str(year) + str(year+1) + ".csv") # direct these into the league folders
+    urlretrieve("https://www.football-data.co.uk/new/BRA.csv", "BRA.csv")
+    urlretrieve("https://www.football-data.co.uk/new/ARG.csv", "ARG.csv")
+main()
